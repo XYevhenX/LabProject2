@@ -1,9 +1,10 @@
-﻿#define _USE_MATH_DEFINES 
-#include <iostream>
+﻿#include <iostream>
 #include <cmath>
 #include <format>
 
 using namespace std;
+
+const double a = 0.0, b = 0.8;
 
 void greeting() {
 	/*
