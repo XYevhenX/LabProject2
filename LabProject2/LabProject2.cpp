@@ -27,6 +27,12 @@ double input() {
 	cout << endl;
 	return x;
 }
+bool is_in_domain(double x) {
+	/*
+	* Checks if the given 'x' value is within the expression's domain.
+	*/
+	return ;
+}
 int main()
 {
     try
