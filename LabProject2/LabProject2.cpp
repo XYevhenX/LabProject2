@@ -32,6 +32,9 @@ void input(double& x, const string& prompt, const string& name) {
 }
 
 double f(double x, double eps) {
+    /*
+    * Calculates and returns the value of the mathematical expression (Variant 105) by given x and epsilon.
+    */
     double sum = 0;
     double term;
     int n = 0;
@@ -70,7 +73,6 @@ int main() {
         double result = f(x, eps);
         cout << " done" << endl;
 
-        // Виправлено 'e' на 'E' для повної відповідності прикладу в методичці
         cout << format("for x = {:.5E}", x) << endl;
         cout << format("for eps = {:.8E}", eps) << endl;
         cout << format("result = {:.9f}", result) << endl;
