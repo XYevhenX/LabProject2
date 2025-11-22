@@ -13,20 +13,19 @@ void greeting() {
 	cout << "The author of this program is Ziuzin Yevhen.\n";
 	cout << "This program calculates the expression from variant by given x. Variant 105.\n";
 }
-double input() {
+void input(double& x, const string & prompt, const string & name) {
 	/*
 	* Prompts the user to enter a double value for 'x'.
 	* Throws invalid_argument if the input stream fails.
 	* Returns the double value entered by the user.
 	*/
-	double x;
-	cout << "Please, enter x from domain (): ";
+	cout << prompt;
 	cin >> x;
 	if (cin.fail()) {
-		throw runtime_error("wrong input");
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		throw runtime_error(format("At time of getting {}: non-numeric value", name));
 	}
-	cout << endl;
-	return x;
 }
 bool is_in_domain(double x) {
 	/*
@@ -38,7 +37,9 @@ int main()
 {
     try
     {
-        
+		double x, eps;
+		input(x, format("Enter a real from [{};{}]: ", a, b), "x");
+
     }
 	catch (exception& e) {
 		cout << e.what() << endl;
