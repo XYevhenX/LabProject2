@@ -70,13 +70,15 @@ int main() {
         double result = f(x, eps);
         cout << " done" << endl;
 
-        cout << format("for x = {:.5f}", x) << endl;
-        cout << format("for eps = {:.8f}", eps) << endl;
+        // Виправлено 'e' на 'E' для повної відповідності прикладу в методичці
+        cout << format("for x = {:.5E}", x) << endl;
+        cout << format("for eps = {:.8E}", eps) << endl;
         cout << format("result = {:.9f}", result) << endl;
 
     }
     catch (exception& e) {
-        cout << "\nError: " << e.what() << endl;
+        cout << "\n***** error" << endl;
+        cout << e.what() << endl;
     }
     return 0;
 }
