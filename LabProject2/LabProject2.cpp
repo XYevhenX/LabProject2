@@ -16,7 +16,7 @@ void greeting() {
 void input(double& x, const string & prompt, const string & name) {
 	/*
 	* Prompts the user to enter a double value for 'x'.
-	* Throws invalid_argument if the input stream fails.
+	* Throws runtime_error if the input stream fails.
 	* Returns the double value entered by the user.
 	*/
 	cout << prompt;
@@ -27,11 +27,22 @@ void input(double& x, const string & prompt, const string & name) {
 		throw runtime_error(format("At time of getting {}: non-numeric value", name));
 	}
 }
-bool is_in_domain(double x) {
-	/*
-	* Checks if the given 'x' value is within the expression's domain.
-	*/
-	return ;
+double f(double x, double eps) {
+	double sum = 0;
+	double term;
+	int n = 0;
+	double x_pow = x;
+
+	term = x_pow / ((n + 1.0) * (2.0 * n + 1.0));
+
+	while (abs(term) >= eps) {
+		sum += term;
+		n++;
+		x_pow *= x;
+		term = x_pow / ((n + 1.0) * (2.0 * n + 1.0));
+	}
+
+	return sum += term;
 }
 int main()
 {
@@ -39,6 +50,21 @@ int main()
     {
 		double x, eps;
 		input(x, format("Enter a real from [{};{}]: ", a, b), "x");
+		if (x < a || x > b)
+			throw runtime_error("At time of getting x: incorrect value");
+		cout << endl;
+
+		input(eps, "Enter positive eps: ", "eps");
+		if (eps <= 0)
+			throw runtime_error("At time of getting eps: incorrect value");
+		cout << endl;
+
+		cout << "***** do calculations ... ";
+		double result = f(x, eps);
+		cout << " done" << endl;
+		cout << format("for x = {:.5f}", x) << endl;
+		cout << format("for eps = {:.8f}", eps) << endl;
+		cout << format("result = {:.9f}", result) << endl;				
 
     }
 	catch (exception& e) {
